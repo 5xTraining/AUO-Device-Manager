@@ -2,6 +2,7 @@
 import DeviceInfo from "./components/headers/Info.vue";
 import DeviceItem from "./components/devices/Item.vue";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 export default {
   components: {
@@ -33,6 +34,11 @@ export default {
         this.device = "";
       }
     },
+  },
+  beforeMount: function () {
+    axios.get("http://localhost:3000/devices").then(({ data }) => {
+      this.devices = data;
+    });
   },
 };
 </script>
