@@ -1,9 +1,11 @@
 <script>
 import DeviceInfo from "./components/headers/Info.vue";
+import DeviceItem from "./components/devices/Item.vue";
 
 export default {
   components: {
     DeviceInfo,
+    DeviceItem,
   },
   data: function () {
     return {
@@ -38,7 +40,7 @@ export default {
     </header>
 
     <ul>
-      <li v-for="d in devices">{{ d }}</li>
+      <DeviceItem v-for="d in devices" :device="d" />
     </ul>
   </section>
 </template>
