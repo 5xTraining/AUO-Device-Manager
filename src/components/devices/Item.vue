@@ -15,8 +15,10 @@ export default {
 </script>
 
 <template>
-  <li>
+  <li
+    class="flex px-2 py-1 text-lg my-1 items-center justify-between bg-slate-100"
+  >
     {{ device.title }}
-    <button @click="remove">X</button>
+    <button class="bg-black text-white px-2 py-1" @click="remove">X</button>
   </li>
 </template>
