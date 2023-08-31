@@ -1,5 +1,10 @@
 <script>
+import DeviceInfo from "./components/headers/Info.vue";
+
 export default {
+  components: {
+    DeviceInfo,
+  },
   data: function () {
     return {
       title: "AUO",
@@ -28,8 +33,9 @@ export default {
     </div>
   </form>
   <section>
-    <h3 v-if="devices.length == 0">目前無任何設備</h3>
-    <h3 v-else>目前共計 {{ devices.length }} 項設備</h3>
+    <header>
+      <DeviceInfo />
+    </header>
 
     <ul>
       <li v-for="d in devices">{{ d }}</li>
