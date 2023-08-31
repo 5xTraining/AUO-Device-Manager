@@ -1,6 +1,7 @@
 <script>
 import DeviceInfo from "./components/headers/Info.vue";
 import DeviceItem from "./components/devices/Item.vue";
+import { v4 as uuidv4 } from "uuid";
 
 export default {
   components: {
@@ -17,7 +18,11 @@ export default {
   methods: {
     addDevice() {
       if (this.device !== "") {
-        this.devices.unshift(this.device);
+        const item = {
+          id: uuidv4(),
+          title: this.device,
+        };
+        this.devices.unshift(item);
         this.device = "";
       }
     },

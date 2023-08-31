@@ -1,11 +1,17 @@
 <script>
 export default {
   props: {
-    device: String,
+    device: {
+      type: Object,
+      required: true,
+    },
   },
 };
 </script>
 
 <template>
-  <li>{{ device }}</li>
+  <li>
+    {{ device.title }}
+    <button>X</button>
+  </li>
 </template>
