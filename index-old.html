@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <h1>Hello Vue</h1>
+
+    <div id="app">
+      <a :ccc="title" :href="url">{{ title }}</a>
+      <br />
+      <input type="text" v-model="device" />
+
+      <button @click="addDevice">+</button>
+      <div v-if="devices.length == 0">目前無任何設備</div>
+      <div v-else>目前有 {{ devices.length }} 個設備</div>
+
+      <ul>
+        <li v-for="d in devices">{{ d }}</li>
+      </ul>
+    </div>
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        data: function () {
+          return {
+            title: "AUO",
+            url: "https://www.auo.com",
+            member: 100,
+            device: "",
+            devices: [],
+          };
+        },
+        methods: {
+          addDevice() {
+            if (this.device != "") {
+              this.devices.unshift(this.device);
+              this.device = "";
+            }
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
