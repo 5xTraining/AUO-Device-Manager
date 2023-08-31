@@ -17,7 +17,11 @@ export default {
   },
   methods: {
     removeItem(id) {
-      console.log("ok", id);
+      const index = this.devices.findIndex((device) => {
+        return device.id === id;
+      });
+
+      this.devices.splice(index, 1);
     },
     addDevice() {
       if (this.device !== "") {
