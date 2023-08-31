@@ -16,6 +16,9 @@ export default {
     };
   },
   methods: {
+    removeItem(id) {
+      console.log("ok", id);
+    },
     addDevice() {
       if (this.device !== "") {
         const item = {
@@ -45,7 +48,11 @@ export default {
     </header>
 
     <ul>
-      <DeviceItem v-for="d in devices" :device="d" />
+      <DeviceItem
+        @remove-auo-item="removeItem"
+        v-for="d in devices"
+        :device="d"
+      />
     </ul>
   </section>
 </template>

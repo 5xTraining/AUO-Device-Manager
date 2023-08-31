@@ -6,12 +6,17 @@ export default {
       required: true,
     },
   },
+  methods: {
+    remove() {
+      this.$emit("remove-auo-item", this.device.id);
+    },
+  },
 };
 </script>
 
 <template>
   <li>
     {{ device.title }}
-    <button>X</button>
+    <button @click="remove">X</button>
   </li>
 </template>
