@@ -34,7 +34,7 @@ export default {
   </form>
   <section>
     <header>
-      <DeviceInfo />
+      <DeviceInfo :devices="devices" />
     </header>
 
     <ul>
