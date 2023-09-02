@@ -2,7 +2,6 @@
 import DeviceInfo from "./components/headers/Info.vue";
 import DeviceItem from "./components/devices/Item.vue";
 import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
 
 export default {
   components: {
@@ -35,11 +34,6 @@ export default {
       }
     },
   },
-  beforeMount: function () {
-    axios.get("http://localhost:3000/devices").then(({ data }) => {
-      this.devices = data;
-    });
-  },
 };
 </script>
 
@@ -48,9 +42,9 @@ export default {
     <h1 class="my-6 text-4xl font-extrabold">{{ title }} 設備管理系統</h1>
     <form>
       <div>
-        <label class="text-white bg-black p-2">設備名稱</label><br />
+        <label class="p-2 text-white bg-black">設備名稱</label><br />
 
-        <div class="flex gap-2 items-center">
+        <div class="flex items-center gap-2">
           <input
             type="text"
             placeholder="請輸入設備名稱"
