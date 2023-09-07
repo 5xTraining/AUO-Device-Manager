@@ -7,11 +7,13 @@ import { createRouter, createWebHashHistory } from "vue-router"
 import Entry from "@/Entry.vue"
 import App from "@/pages/App.vue"
 import About from "@/pages/About.vue"
+import DeviceDetail from "@/pages/DeviceDetail.vue"
 
 const routes = [
   { path: "/", component: App },
   { path: "/about", component: About },
   { path: "/app", component: App },
+  { path: "/devices/:deviceId", component: DeviceDetail },
 ]
 
 const router = createRouter({
