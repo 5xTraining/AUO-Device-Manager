@@ -2,11 +2,16 @@
 import DeviceInfo from "@/components/headers/Info.vue"
 import DeviceItem from "@/components/devices/Item.vue"
 import { v4 as uuidv4 } from "uuid"
-import { ref, reactive } from "vue"
+import { ref, reactive, onBeforeMount } from "vue"
 
 const title = "AUO"
 const device = ref("")
 const devices = reactive([])
+const StorageKey = "AUO-Device-List"
+
+const save = (key, data) => {
+  localStorage.setItem(key, JSON.stringify(data))
+}
 
 const addDevice = () => {
   if (device !== "") {
@@ -15,6 +20,9 @@ const addDevice = () => {
       title: device.value,
     }
     devices.unshift(item)
+
+    save(StorageKey, devices)
+
     device.value = ""
   }
 }
@@ -25,11 +33,17 @@ const removeItem = (id) => {
   })
 
   devices.splice(index, 1)
+  save(StorageKey, devices)
 }
+
+onBeforeMount(() => {
+  const saveDevices = JSON.parse(localStorage.getItem(StorageKey))
+  devices.push(...saveDevices)
+})
 </script>
 
 <template>
-  <h1 class="my-6 text-4xl font-extrabold">{{ title }} 設備管理系統</h1>
+  <h1 class="h1">{{ title }} 設備管理系統</h1>
   <form>
     <div>
       <label class="p-2 text-white bg-black">設備名稱</label><br />
@@ -60,7 +74,7 @@ const removeItem = (id) => {
   </section>
 </template>
 
-<style scoped>
+<style>
 .input-device {
   @apply my-2 px-2 text-xl py-2 border border-slate-500;
 }
