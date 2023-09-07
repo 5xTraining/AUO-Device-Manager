@@ -29,39 +29,35 @@ const removeItem = (id) => {
 </script>
 
 <template>
-  <main class="mx-6 sm:mx-12">
-    <h1 class="my-6 text-4xl font-extrabold">{{ title }} 設備管理系統</h1>
-    <form>
-      <div>
-        <label class="p-2 text-white bg-black">設備名稱</label><br />
+  <h1 class="my-6 text-4xl font-extrabold">{{ title }} 設備管理系統</h1>
+  <form>
+    <div>
+      <label class="p-2 text-white bg-black">設備名稱</label><br />
 
-        <div class="flex items-center gap-2">
-          <input
-            type="text"
-            placeholder="請輸入設備名稱"
-            class="input-device"
-            v-model="device"
-          />
-          <button @click.prevent="addDevice" class="btn btn-action">
-            新增
-          </button>
-        </div>
-      </div>
-    </form>
-    <section>
-      <header>
-        <DeviceInfo :devices="devices" />
-      </header>
-
-      <ul>
-        <DeviceItem
-          @remove-auo-item="removeItem"
-          v-for="d in devices"
-          :device="d"
+      <div class="flex items-center gap-2">
+        <input
+          type="text"
+          placeholder="請輸入設備名稱"
+          class="input-device"
+          v-model="device"
         />
-      </ul>
-    </section>
-  </main>
+        <button @click.prevent="addDevice" class="btn btn-action">新增</button>
+      </div>
+    </div>
+  </form>
+  <section>
+    <header>
+      <DeviceInfo :devices="devices" />
+    </header>
+
+    <ul>
+      <DeviceItem
+        @remove-auo-item="removeItem"
+        v-for="d in devices"
+        :device="d"
+      />
+    </ul>
+  </section>
 </template>
 
 <style scoped>
