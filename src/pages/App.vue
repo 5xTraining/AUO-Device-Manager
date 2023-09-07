@@ -43,7 +43,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <h1 class="h1">{{ title }} 設備管理系統</h1>
+  <h1 class="h1">{{ title }} 裝置管理系統</h1>
   <form>
     <div>
       <label class="p-2 text-white bg-black">設備名稱</label><br />
