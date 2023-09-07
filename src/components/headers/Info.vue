@@ -1,22 +1,16 @@
-<script>
-export default {
-  props: {
-    devices: {
-      type: Array,
-      required: true,
-      default: [],
-    },
-  },
-  computed: {
-    deviceCount() {
-      return this.devices.length;
-    },
+<script setup>
+import { computed } from "vue"
 
-    noDevice() {
-      return this.deviceCount === 0;
-    },
+const props = defineProps({
+  devices: {
+    type: Array,
+    required: true,
+    default: [],
   },
-};
+})
+
+const deviceCount = computed(() => props.devices.length)
+const noDevice = computed(() => deviceCount.value === 0)
 </script>
 
 <template>
