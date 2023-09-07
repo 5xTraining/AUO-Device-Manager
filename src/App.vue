@@ -1,31 +1,31 @@
 <script setup>
-import DeviceInfo from "@/components/headers/Info.vue";
-import DeviceItem from "@/components/devices/Item.vue";
-import { v4 as uuidv4 } from "uuid";
-import { ref, reactive } from "vue";
+import DeviceInfo from "@/components/headers/Info.vue"
+import DeviceItem from "@/components/devices/Item.vue"
+import { v4 as uuidv4 } from "uuid"
+import { ref, reactive } from "vue"
 
-const title = "AUO";
-const device = ref("");
-const devices = reactive([]);
+const title = "AUO"
+const device = ref("")
+const devices = reactive([])
 
 const addDevice = () => {
   if (device !== "") {
     const item = {
       id: uuidv4(),
       title: device.value,
-    };
-    devices.unshift(item);
-    device.value = "";
+    }
+    devices.unshift(item)
+    device.value = ""
   }
-};
+}
 
 const removeItem = (id) => {
   const index = devices.findIndex((device) => {
-    return device.id === id;
-  });
+    return device.id === id
+  })
 
-  devices.splice(index, 1);
-};
+  devices.splice(index, 1)
+}
 </script>
 
 <template>
