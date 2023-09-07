@@ -1,39 +1,31 @@
-<script>
+<script setup>
 import DeviceInfo from "./components/headers/Info.vue";
 import DeviceItem from "./components/devices/Item.vue";
 import { v4 as uuidv4 } from "uuid";
+import { ref, reactive } from "vue";
 
-export default {
-  components: {
-    DeviceInfo,
-    DeviceItem,
-  },
-  data: function () {
-    return {
-      title: "AUO",
-      device: "",
-      devices: [],
+// Options -> Composition
+const title = "AUO";
+const device = ref("");
+const devices = reactive([]);
+
+const addDevice = () => {
+  if (device !== "") {
+    const item = {
+      id: uuidv4(),
+      title: device.value,
     };
-  },
-  methods: {
-    removeItem(id) {
-      const index = this.devices.findIndex((device) => {
-        return device.id === id;
-      });
+    devices.unshift(item);
+    device.value = "";
+  }
+};
 
-      this.devices.splice(index, 1);
-    },
-    addDevice() {
-      if (this.device !== "") {
-        const item = {
-          id: uuidv4(),
-          title: this.device,
-        };
-        this.devices.unshift(item);
-        this.device = "";
-      }
-    },
-  },
+const removeItem = (id) => {
+  const index = devices.findIndex((device) => {
+    return device.id === id;
+  });
+
+  devices.splice(index, 1);
 };
 </script>
 
