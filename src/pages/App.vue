@@ -37,7 +37,7 @@ const removeItem = (id) => {
 }
 
 onBeforeMount(() => {
-  const saveDevices = JSON.parse(localStorage.getItem(StorageKey))
+  const saveDevices = JSON.parse(localStorage.getItem(StorageKey) || "[]")
   devices.push(...saveDevices)
 })
 </script>
